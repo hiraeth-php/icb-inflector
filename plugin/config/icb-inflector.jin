@@ -8,7 +8,7 @@ locale = en
 [application]
 
 	aliases = {
-		"ICanBoogie\Inflector": "Inflector"
+		"ICanBoogie\\Inflector": "Inflector"
 	}
 
 	delegates = [
@@ -18,5 +18,5 @@ locale = en
 [twig]
 
 	globals = {
-		"inflector": "ICanBoogie\Inflector"
+		"inflector": "ICanBoogie\\Inflector"
 	}
