@@ -19,8 +19,9 @@ class InflectorDelegate implements Hiraeth\Delegate
 	/**
 	 *
 	 */
-	public function __construct(Hiraeth\Configuration $config)
+	public function __construct(Hiraeth\Application $app, Hiraeth\Configuration $config)
 	{
+		$this->app    = $app;
 		$this->config = $config;
 	}
 
@@ -59,6 +60,9 @@ class InflectorDelegate implements Hiraeth\Delegate
 	 */
 	public function __invoke(Hiraeth\Broker $broker)
 	{
-		return ICanBoogie\Inflector::get($this->config->get('icb-inflector', 'locale', 'en'));
+		$locale = $this->config->get('icb-inflector', 'locale', 'en');
+		$locale = $this->app->getEnvironment('LOCALE', $locale);
+
+		return ICanBoogie\Inflector::get($locale);
 	}
 }
